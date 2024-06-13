@@ -32,6 +32,9 @@ cd Credit_Card_Fraud_Detection_Using_Kaggle_Data-Set
 3. Install the required Python packages:
 pip install -r requirements.txt
 
+4. Fetching Dataset:
+I have added a text file Named (data_set.txt) which contains a kaggle dataset link just simply click on it and download the dataset it might take
+a few minutes as the file is large.
 
 ## Usage
 
