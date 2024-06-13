@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Prediction Form</h2>
+
+<form id="predictionForm">
+  <label for="query_points">Query Points:</label><br>
+  <input type="text" id="query_points" name="query_points" placeholder="Enter 29 comma-separated values"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p id="result"></p>
+
+<script>
+document.getElementById('predictionForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get the value from the input field and split it into an array
+  var query_point = document.getElementById('query_points').value.split(',').map(Number);
+
+  fetch('http://localhost:5000/predict', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query_point: query_point,
+    }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    var result = data.prediction[0] === 1 ? 'Fraud' : 'Not Fraud';
+    document.getElementById('result').textContent = 'Prediction: ' + result;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+</script>
+
+</body>
+</html>
