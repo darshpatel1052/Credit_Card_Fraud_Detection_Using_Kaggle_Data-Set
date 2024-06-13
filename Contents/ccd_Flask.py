@@ -4,8 +4,8 @@ import joblib
 
 app = Flask(__name__)
 
-rf = joblib.load('D:/ML/100_days_of_ml/model.joblib')
-pipeline=joblib.load('D:/ML/100_days_of_ml/pipeline.joblib')
+rf = joblib.load('Contents/model.joblib')
+pipeline=joblib.load('Contents/pipeline.joblib')
 
 @app.route('/')
 def home():
